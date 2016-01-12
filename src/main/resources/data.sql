@@ -23,3 +23,29 @@ INSERT INTO person (
     'NC',
     '28801'
 );
+
+INSERT INTO client (
+    company_name,
+    phone_number,
+    website,
+    street_address,
+    city,
+    state,
+    zip_code
+) VALUES (
+    'Test Company 2',
+    '555-555-5555',
+    'www.test1.com',
+    '123 Test St.',
+    'Asheville',
+    'NC',
+    '28801'
+), (
+    'Test Company 2',
+    '888-888-8888',
+    'www.test2.com',
+    '123 Test St.',
+    'Asheville',
+    'NC',
+    '28801'
+);

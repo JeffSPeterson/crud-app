@@ -13,32 +13,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Person Listing</title>
+        <title>Client Listing</title>
     </head>
     <body>
-        <h1>Person Listing</h1>     
-        <p><a href="${pageContext.request.contextPath}/person/create">Create New Person</a></p>
+        <h1>Client Listing</h1>     
+        <p><a href="${pageContext.request.contextPath}/client/create">Create New Client</a></p>
         <c:choose>
-            <c:when test="${fn:length(persons) gt 0}">
+            <c:when test="${fn:length(clients) gt 0}">
                 <table>
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email Address</th>
+                            <th>Company Name</th>
+                            <th>Phone Number</th>
+                            <th>Website</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${persons}" var="person">
+                        <c:forEach items="${clients}" var="client">
                             <tr>
-                                <td>${person.firstName}</td>
-                                <td>${person.lastName}</td>
-                                <td>${person.emailAddress}</td>
+                                <td>${client.companyName}</td>
+                                <td>${client.phoneNumber}</td>
+                                <td>${client.website}</td>
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit Person</a>
-                                    <a href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete Person</a>
-                                    <a href="${pageContext.request.contextPath}/client/list">View Clients</a>
+                                    <a href="${pageContext.request.contextPath}/client/edit/${client.clientId}">Edit Client</a>
+                                    <a href="${pageContext.request.contextPath}/client/delete/${client.clientId}">Delete Client</a>
                                 </td>
                             </tr>
                         </c:forEach>
