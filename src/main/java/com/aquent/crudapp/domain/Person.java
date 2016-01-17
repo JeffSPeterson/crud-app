@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 public class Person {
 
     private Integer personId;
+    private Integer clientId;
 
     @NotNull
     @Size(min = 1, max = 50, message = "First name is required with maximum length of 50")
@@ -37,16 +38,25 @@ public class Person {
     @NotNull
     @Size(min = 5, max = 5, message = "Zip code is required with length 5")
     private String zipCode;
+    
 
-    public Integer getPersonId() {
+	public Integer getPersonId() {
         return personId;
     }
 
     public void setPersonId(Integer personId) {
         this.personId = personId;
     }
+    
+    public Integer getClientId() {
+		return clientId;
+	}
 
-    public String getFirstName() {
+	public void setClientId(Integer clientId) {
+		this.clientId = clientId;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 
@@ -101,4 +111,6 @@ public class Person {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+    
+    
 }

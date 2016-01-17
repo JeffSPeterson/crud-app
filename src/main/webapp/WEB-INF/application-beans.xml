@@ -38,6 +38,17 @@
         p:personDao-ref="personDao"
         p:validator-ref="validator" />
         
+  <bean id="userDao" class="com.aquent.crudapp.data.dao.jdbc.UserJdbcDao">
+    <property name="namedParameterJdbcTemplate">
+      <bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" c:classicJdbcTemplate-ref="jdbcTemplate" />
+    </property>
+  </bean>
+
+  <bean id="userService"
+        class="com.aquent.crudapp.service.DefaultUserService"
+        p:userDao-ref="userDao"
+        p:validator-ref="validator" />
+        
   <bean id="clientDao" class="com.aquent.crudapp.data.dao.jdbc.ClientJdbcDao">
     <property name="namedParameterJdbcTemplate">
       <bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate" c:classicJdbcTemplate-ref="jdbcTemplate" />

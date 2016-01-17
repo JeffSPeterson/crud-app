@@ -1,7 +1,8 @@
 package com.aquent.crudapp.data.dao;
 
-import com.aquent.crudapp.domain.Client;
 import java.util.List;
+
+import com.aquent.crudapp.domain.Client;
 
 /**
  * Operations on the "client" table.
@@ -37,6 +38,14 @@ public interface ClientDao {
      * @param client the new values to save
      */
     void updateClient(Client client);
+    
+    /**
+     * Updates and returns an existing client record.
+     *
+     * @param client the new values to save
+     * @return client updated client
+     */
+    Client updateAndReturnClient(Client client);
 
     /**
      * Deletes a client record by ID.
@@ -44,4 +53,5 @@ public interface ClientDao {
      * @param id the client ID
      */
     void deleteClient(Integer id);
+    
 }

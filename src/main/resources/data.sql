@@ -1,3 +1,17 @@
+INSERT INTO user (
+    username,
+    password,
+    email_address
+) VALUES (
+    'Ren Hoek',
+    'ediot',
+    'ren@happy.com'
+), (
+    'Stimpson J Cat',
+    'mudskipper',
+    'stimpy@joy.com'
+);
+
 INSERT INTO person (
     first_name,
     last_name,
@@ -33,7 +47,7 @@ INSERT INTO client (
     state,
     zip_code
 ) VALUES (
-    'Test Company 2',
+    'Test Company 1',
     '555-555-5555',
     'www.test1.com',
     '123 Test St.',

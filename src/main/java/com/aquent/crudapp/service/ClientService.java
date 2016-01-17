@@ -38,6 +38,14 @@ public interface ClientService {
      * @param client the new values to save
      */
     void updateClient(Client client);
+    
+    /**
+     * Updates an existing client record.
+     *
+     * @param client the new values to save
+     * @return client updated client
+     */
+    Client updateAndReturnClient(Client client);
 
     /**
      * Deletes a client record by ID.

@@ -53,6 +53,12 @@ public class DefaultClientService implements ClientService {
     public void updateClient(Client client) {
         clientDao.updateClient(client);
     }
+    
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)
+    public Client updateAndReturnClient(Client client) {
+        return clientDao.updateAndReturnClient(client);
+    }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)

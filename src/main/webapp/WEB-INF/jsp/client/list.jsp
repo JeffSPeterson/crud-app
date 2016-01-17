@@ -48,5 +48,6 @@
                 <p>No results found.</p>
             </c:otherwise>
         </c:choose>
+        <button type="button" name="back" onclick="history.back()">Back To People</button>
     </body>
 </html>

@@ -1,0 +1,29 @@
+/* example styles for validation form demo */
+
+#register-form .fieldgroup label {
+    float: left;
+    padding: 15px 0 0;
+    text-align: right;
+    width: 110px;
+}
+
+#register-form .fieldgroup input, #register-form .fieldgroup textarea, #register-form .fieldgroup select {
+    float: left;
+    margin: 10px 0;
+    height: 25px;
+}
+
+#register-form .submit {
+    padding: 10px;
+    width: 220px;
+    height: 40px !important;
+}
+
+#register-form .fieldgroup label.error {
+    color: #FB3A3A;
+    display: inline-block;
+    margin: 4px 0 5px 125px;
+    padding: 0;
+    text-align: left;
+    width: 220px;
+}

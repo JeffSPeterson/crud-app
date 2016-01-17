@@ -7,6 +7,7 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@taglib prefix='fn' uri='http://java.sun.com/jsp/jstl/functions'%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -48,8 +49,29 @@
             <br/>
             <label for="zipCode">Zip Code:</label>
             <input type="text" name="zipCode" value="${person.zipCode}"/>
-            <br/>
+            <br/> <label for="clientId">Client:</label>
+
+		<c:choose>
+			<c:when test="${person.clientId == null}">
+				<form:select path="person" name="clientId">
+					<p>
+						<form:option value="${null}" label="Choose Contact" />
+						<form:options items="${clientList}" var="client" itemLabel="key" itemValue="key" />
+				</form:select>
+			</c:when>
+			<c:otherwise>
+				<form:select path="person" name="clientId"
+					label="${person.clientId}">
+					<p>
+						<form:options items="${clientList}" var="client" itemLabel="key" itemValue="key" />
+				</form:select>
+			</c:otherwise>
+		</c:choose>
+		<br/>
+		<form:errors path="person" cssClass="error" />
+			<br/>
             <input type="submit" name="Submit" value="Submit"/>
-        </form>
+            <button type="button" name="back" onclick="history.back()">Cancel</button>
+         </form>
     </body>
 </html>

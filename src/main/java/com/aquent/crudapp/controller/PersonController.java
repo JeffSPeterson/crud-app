@@ -1,18 +1,25 @@
 package com.aquent.crudapp.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.aquent.crudapp.domain.Client;
 import com.aquent.crudapp.domain.Person;
+import com.aquent.crudapp.service.ClientService;
 import com.aquent.crudapp.service.PersonService;
 
 /**
@@ -25,6 +32,7 @@ public class PersonController {
     public static final String COMMAND_DELETE = "Delete";
 
     @Inject private PersonService personService;
+    @Inject private ClientService clientService;
 
     /**
      * Renders the listing page.
@@ -72,7 +80,7 @@ public class PersonController {
             return mav;
         }
     }
-
+    
     /**
      * Renders an edit form for an existing person record.
      *
@@ -80,9 +88,10 @@ public class PersonController {
      * @return edit view populated from the person record
      */
     @RequestMapping(value = "edit/{personId}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable Integer personId) {
+    public ModelAndView edit(@PathVariable Integer personId, Model model) {
         ModelAndView mav = new ModelAndView("person/edit");
         mav.addObject("person", personService.readPerson(personId));
+        mav.addObject("clientList", clientList());
         mav.addObject("errors", new ArrayList<String>());
         return mav;
     }
@@ -136,4 +145,16 @@ public class PersonController {
         }
         return "redirect:/person/list";
     }
+
+    @ModelAttribute("clientList")
+	public Set<Map.Entry<Integer, String>> clientList() {
+		Set<Map.Entry<Integer, String>> clients;
+		Map<Integer, String> selectItems = new HashMap<>();
+		List<Client> jdbcClients = clientService.listClients();
+		for (Client client : jdbcClients) {
+			selectItems.put(client.getClientId(), client.getCompanyName());
+		}
+		clients = selectItems.entrySet();
+		return clients;
+	}
 }

@@ -18,6 +18,7 @@
     <body>
         <h1>Person Listing</h1>     
         <p><a href="${pageContext.request.contextPath}/person/create">Create New Person</a></p>
+        <p><a href="${pageContext.request.contextPath}/client/list">View Clients</a></p>
         <c:choose>
             <c:when test="${fn:length(persons) gt 0}">
                 <table>
@@ -26,6 +27,7 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email Address</th>
+                            <th>Company</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -35,10 +37,10 @@
                                 <td>${person.firstName}</td>
                                 <td>${person.lastName}</td>
                                 <td>${person.emailAddress}</td>
+                                <td><a href="${pageContext.request.contextPath}/client/view/${person.clientId}">${person.clientId}</a></td>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/person/edit/${person.personId}">Edit Person</a>
                                     <a href="${pageContext.request.contextPath}/person/delete/${person.personId}">Delete Person</a>
-                                    <a href="${pageContext.request.contextPath}/client/list">View Clients</a>
                                 </td>
                             </tr>
                         </c:forEach>
