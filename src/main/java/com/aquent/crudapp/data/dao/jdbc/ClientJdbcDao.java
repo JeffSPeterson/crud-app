@@ -87,4 +87,10 @@ public class ClientJdbcDao implements ClientDao {
             return client;
         }
     }
+
+	@Override
+	public Client updateAndReturnClient(Client client) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
